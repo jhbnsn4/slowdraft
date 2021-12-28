@@ -1,0 +1,20 @@
+.ng-select.custom {
+    margin: 8px;
+    width: 33%;
+}
+.row {
+    margin: 8px;
+
+}
+select.form-select{
+    width: 33%;
+    border: 24px;
+    margin: 9px;}
+
+    .header {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+       
+        padding: 10px;
+    }

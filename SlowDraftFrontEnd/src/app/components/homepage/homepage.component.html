@@ -1,2 +1,33 @@
-<h1>SLOW DRAFT</h1>
-<h4>Take. Your. Time.</h4>
+<div class = "header"><h1>SLOW DRAFT</h1>
+<h4>Take. Your. Time.</h4></div>
+
+<br><br>
+<ng-select class="custom"
+[items]="items"
+bindLabel="firstName"
+placeholder="Search Players"
+appendTo="body"
+[clearable] = "true"
+[(ngModel)]="selected">
+<ng-template ng-label-tmp let-item="item">
+   {{item.firstName}} {{item.lastName}}, <b>{{item.team}},</b> {{item.age}}
+ </ng-template>
+ <ng-template ng-option-tmp let-item="item" let-search="searchTerm" let-index="index">
+    <span >{{ item.firstName + ' ' + item.lastName +  ', ' + item.position }}, <b>({{item.team}})</b></span>
+</ng-template>
+</ng-select>
+
+
+<div class="row">
+    <div class="col-sm-6"  *ngFor="let player of players" >
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{player.firstName + " " + player.lastName }}</h5>
+          <p class="card-text">{{"Number: " + player.age}}</p>
+          <p class="card-text">{{"Team: " + player.team}}</p>
+          <p class="card-text">{{"Position: " + player.position}}</p>
+          <a href="#" class="btn btn-dark">Player Details</a>
+        </div> 
+      </div>
+    </div>
+  
