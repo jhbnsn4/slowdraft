@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserserviceService } from 'src/app/services/userservice.service';
 
@@ -11,13 +12,17 @@ export class NavbarComponent implements OnInit {
 checkLoggedIn!: boolean;
 loggedInSubscription: Subscription = new Subscription;
 
-  constructor(private userService: UserserviceService) { }
+  constructor(private userService: UserserviceService,  private router: Router) { }
 
   ngOnInit(): void {
     this.loggedInSubscription = this.userService.loggedInMessage.subscribe(message => this.checkLoggedIn = message)
 
 
-   this.userService.setIsLoggedIn(false);
+
+  }
+  logoutClicked(){
+    this.userService.setIsLoggedIn(false);
+    this.router.navigateByUrl('/login');
 
   }
 

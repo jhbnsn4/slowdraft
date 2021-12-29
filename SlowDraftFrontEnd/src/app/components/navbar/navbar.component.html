@@ -5,11 +5,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li *ngIf ="!checkLoggedIn" class="nav-item active">
-          <a class="nav-link" href="/register">Register</a>
-        </li>
+      
         <li *ngIf = "checkLoggedIn" class="nav-item">
-          <a class="nav-link" href="/login">Login</a>
+          <button class="btn btn-dark" (click) = "logoutClicked()">Logout</button>
+        </li>
+
+        <li *ngIf = "!checkLoggedIn" class="nav-item">
+          <button class="btn btn-dark"  (click) = "logoutClicked()">Login</button>
         </li>
       
       </ul>
