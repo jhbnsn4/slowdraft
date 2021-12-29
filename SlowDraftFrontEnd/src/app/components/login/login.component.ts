@@ -36,9 +36,6 @@ export class LoginComponent implements OnInit {
   this.userService.loginRequest(this.userAccount).subscribe(data => {
     if(data.message==="Unsuccessfull login"){
       
-    console.log("WE ARE IN LOGIN success THE data IS: ");
-    console.log(data);
-    console.log("FIN");
   
       this.router.navigate(['/login']);
       this.emailName=""
@@ -48,6 +45,7 @@ export class LoginComponent implements OnInit {
     } else{   
 
       localStorage.setItem("isLoggedIn", "true");
+      this.userService.setIsLoggedIn(true);
       localStorage.setItem("userId", data.otherPossibleInformation);
       this.router.navigate(['/homepage']);
     }

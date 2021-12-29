@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { IUser } from '../models/user';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IMyCustomMessage } from '../models/mycustommessage';
 
 
@@ -10,8 +10,8 @@ import { IMyCustomMessage } from '../models/mycustommessage';
   providedIn: 'root'
 })
 export class UserserviceService {
-  isLoggedIn = true;
-  
+  private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  loggedInMessage = this.isLoggedIn.asObservable();
   public _localClientDomain: string = 'http://localhost:4200/';
   public _localServerDomain: string = 'http://localhost:9090/';
 
@@ -25,6 +25,10 @@ export class UserserviceService {
     
 
   }
+  setIsLoggedIn(message: boolean) {
+    this.isLoggedIn.next(message)
+  }
+
 
   loginRequest(myUser: IUser): Observable<IMyCustomMessage>{
 
